@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="node_modules/lil-gui/dist/lil-gui.umd.js"></script>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.141/Build/Cesium/Cesium.js"></script>
+  <script src="src/getText.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.141/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <link href="node_modules/lil-gui/dist/lil-gui.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="cesiumContainer"></div>
+  <script type="module">
+    Cesium.Ion.defaultAccessToken = await getText("cesium-read-key.txt");
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+      terrain: Cesium.Terrain.fromWorldTerrain(),
+      timeline: false,
+      animation: false,
+      homeButton: false,
+      scene3DOnly: true,
+      selectionIndicator: false,
+      geocoder: false,
+      infoBox: true
+    });    
+
+    // Fly the camera to San Francisco at the given longitude, latitude, and height.
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(-75.165222, 39.952583, 9000),
+      orientation: {
+        heading: Cesium.Math.toRadians(0.0),
+        pitch: Cesium.Math.toRadians(-89.0),
+      }
+    });
+    
+    const imgname = "assets/test-image.jpg";
+    const dataPoint = { longitude: -75.165222, latitude: 39.952583, height: 0 };
+    // Mark this location with a red point.
+    const pointEntity = viewer.entities.add({
+        name: `Name`,
+        id: `Id`,
+        description: `<h1>Updated Content</h1>
+              <p>An example description</p><br>
+              <figure>
+              <figcaption>Listen to the T-Rex:</figcaption>
+                <audio controls src="assets/t-rex-roar.mp3"></audio>
+                </figure>
+              <img src=${imgname} /><br>
+              `,
+        position: Cesium.Cartesian3.fromDegrees(dataPoint.longitude, dataPoint.latitude, dataPoint.height),
+        point: {
+            pixelSize: 10,
+            color: Cesium.Color.BLACK,
+            outlineColor: Cesium.Color.WHITE,
+            outlineWidth: 2,
+        },
+        billboard: {
+            image: "assets/pin.png",
+            width: 32,
+            height: 50,
+            pixelOffset: new Cesium.Cartesian2(0, -25),
+        },
+        label: {
+            text: "TEST",
+            font: "14pt monospace",
+            style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+            outlineWidth: 2,
+            verticalOrigin: Cesium.VerticalOrigin.MIDDLE,
+            horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
+            pixelOffset: new Cesium.Cartesian2(10, 0),
+        }
+    });
+
+    const clickhandler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+    clickhandler.setInputAction(async (movement) => {
+        const pick = viewer.scene.pick(movement.position);
+        if (Cesium.defined(pick)) {
+            console.log("Mouse clicked:", pick.id);
+        }
+    }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+    const gui = new lil.GUI({title: "Song of Philadelphia", closeFolders: true});
+    gui.domElement.style.position = "absolute";
+    gui.domElement.style.top = "10px";
+    gui.domElement.style.left = "10px";
+    gui.domElement.style.zIndex = "1000";
+
+    const myObject = {
+        location1: function() { console.log("location1"); },
+        location2: function() { console.log("location2"); }
+    };
+
+    const season3 = gui.addFolder( 'Season 3' );
+    const ep1 = season3.addFolder( 'Episode 1' );
+    const ep2 = season3.addFolder( 'Episode 2' );
+    const ep3 = season3.addFolder( 'Episode 3' );
+
+    ep1.add(myObject, 'location1');
+    ep1.add(myObject, 'location2');
+
+    ep2.add(myObject, 'location1');
+    ep2.add(myObject, 'location2');
+
+    ep3.add(myObject, 'location1');
+    ep3.add(myObject, 'location2');
+  </script>
+ </div>
+</body>
+</html>

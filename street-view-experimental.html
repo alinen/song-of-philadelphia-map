@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="node_modules/lil-gui/dist/lil-gui.umd.js"></script>
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.141/Build/Cesium/Cesium.js"></script>
+  <script src="src/getText.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.141/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <link href="node_modules/lil-gui/dist/lil-gui.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="cesiumContainer"></div>
+<script type="module">
+
+Cesium.Ion.defaultAccessToken = await getText("cesium-read-key.txt");
+const viewer = new Cesium.Viewer("cesiumContainer", { 
+  selectionIndicator: false, 
+  terrain: Cesium.Terrain.fromWorldTerrain(),
+  timeline: false,
+  animation: false,
+  homeButton: false,
+  scene3DOnly: true,
+  selectionIndicator: false,
+  geocoder: false,
+  infoBox: true
+});  
+
+const ionResponse = await Cesium.Resource.fetchJson({ 
+  url: `${Cesium.Ion.defaultServer}/experimental/panoramas/google`, 
+  headers: { 
+    Authorization: `Bearer ${Cesium.Ion.defaultAccessToken}`, 
+  }, 
+}); 
+
+Cesium.GoogleMaps.defaultStreetViewStaticApiKey = ionResponse.options.key; 
+Cesium.GoogleMaps.streetViewStaticApiEndpoint = ionResponse.options.url;   
+const provider = 
+  await Cesium.GoogleStreetViewCubeMapPanoramaProvider.fromUrl();       
+
+async function loadPanorama(panoIdObject) { 
+  const { panoId, latitude, longitude } = panoIdObject; 
+
+  const panoCartographic = Cesium.Cartographic.fromDegrees( 
+    longitude, 
+    latitude, 
+    0 
+  ); 
+
+  const streetViewPanorama = await provider.loadPanorama({ 
+    cartographic: panoCartographic, 
+    panoId, 
+  }); 
+
+  viewer.scene.primitives.add(streetViewPanorama); 
+
+  const lookPosition = Cesium.Cartesian3.fromDegrees( 
+    longitude, 
+    latitude, 
+    0 
+  ); 
+
+  const heading = Cesium.Math.toRadians(-90); 
+
+  viewer.scene.camera.lookAt( 
+    lookPosition, 
+    new Cesium.HeadingPitchRange( 
+      heading, // heading 
+      0, // pitch 
+      2 // range 
+    ) 
+  ); 
+}     
+const controller = viewer.scene.screenSpaceCameraController; 
+ 
+controller.enableRotate = true; 
+controller.enableTilt = true; 
+controller.enableTranslate = false; 
+controller.enableZoom = false; 
+
+const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas); 
+ 
+const minFov = Cesium.Math.toRadians(20.0); 
+const maxFov = Cesium.Math.toRadians(100.0); 
+const zoomSpeed = 0.05; 
+ 
+handler.setInputAction( 
+  function (wheelDelta) { 
+    const camera = viewer.camera; 
+    const frustum = camera.frustum; 
+
+    let fov = frustum.fov; 
+
+    if (wheelDelta < 0) { 
+      fov *= 1.0 + zoomSpeed; 
+    } else { 
+      fov *= 1.0 - zoomSpeed; 
+    } 
+
+    frustum.fov = Cesium.Math.clamp(fov, minFov, maxFov); 
+  }, 
+  Cesium.ScreenSpaceEventType.WHEEL 
+);       
+
+const imgname = "assets/test-image.jpg";
+const dataPoint = { longitude: -75.165222, latitude: 39.952583, height: 0 };
+// Mark this location with a red point.
+const pointEntity = viewer.entities.add({
+    name: `Name`,
+    id: `Id`,
+    description: `<h1>Updated Content</h1>
+            <p>An example description</p><br>
+            <figure>
+            <figcaption>Listen to the T-Rex:</figcaption>
+            <audio controls src="assets/t-rex-roar.mp3"></audio>
+            </figure>
+            <img src=${imgname} /><br>
+            `,
+    position: Cesium.Cartesian3.fromDegrees(dataPoint.longitude, dataPoint.latitude, dataPoint.height),
+    point: {
+        pixelSize: 10,
+        color: Cesium.Color.BLACK,
+        outlineColor: Cesium.Color.WHITE,
+        outlineWidth: 2,
+    },
+    billboard: {
+        image: "assets/pin.png",
+        width: 32,
+        height: 50,
+        pixelOffset: new Cesium.Cartesian2(0, -25),
+    },
+    label: {
+        text: "TEST",
+        font: "14pt monospace",
+        style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+        outlineWidth: 2,
+        verticalOrigin: Cesium.VerticalOrigin.MIDDLE,
+        horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
+        pixelOffset: new Cesium.Cartesian2(10, 0),
+    }
+});
+
+const clickhandler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+clickhandler.setInputAction(async (movement) => {
+    const pick = viewer.scene.pick(movement.position);
+    if (Cesium.defined(pick)) {
+        console.log("Mouse clicked:", pick.id);
+    }
+}, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+viewer.infoBox.viewModel.cameraClicked.addEventListener(async (clickevent) => {
+    console.log("camera clicked");
+    // TODO: Use info box location
+    // TODO: Toggle view when clicking the camera
+    const longitude = -75.165222; 
+    const latitude = 39.952583; 
+    const height = 1; // meters 
+    
+    const cartographic = Cesium.Cartographic.fromDegrees( 
+        longitude, 
+        latitude, 
+        height 
+    ); 
+    viewer.scene.globe.show = false;    
+    viewer.scene.primitives.show = true;
+    
+    const panoIdObject = await provider.getNearestPanoId(cartographic, 100); 
+    loadPanorama(panoIdObject);       
+});
+
+viewer.infoBox.viewModel.closeClicked.addEventListener((clickevent) => {
+    console.log("window closed");
+    viewer.scene.primitives.show = false;
+    viewer.scene.globe.show = true;    
+    viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(-75.165222, 39.952583, 9000),
+        orientation: {
+        heading: Cesium.Math.toRadians(0.0),
+        pitch: Cesium.Math.toRadians(-89.0),
+        }
+    });
+});
+
+
+viewer.camera.flyTo({
+    destination: Cesium.Cartesian3.fromDegrees(-75.165222, 39.952583, 9000),
+    orientation: {
+    heading: Cesium.Math.toRadians(0.0),
+    pitch: Cesium.Math.toRadians(-89.0),
+    }
+});
+
+
+
+</script>
+</body>
+</html>

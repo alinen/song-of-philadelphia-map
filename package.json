@@ -1,0 +1,28 @@
+{
+  "name": "song-of-philadelphia-map",
+  "version": "1.0.0",
+  "description": "Interactive map companion for the Song of Philadelphia podcast",
+  "keywords": [
+    "cesium",
+    "javascript",
+    "osm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "github.com/alinen/song-of-philadelphia"
+  },
+  "license": "ISC",
+  "author": "Aline Normoyle",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cesium": "^1.141.0",
+    "dat.gui": "^0.7.9"
+  },
+  "devDependencies": {
+    "lil-gui": "^0.21.0"
+  }
+}
