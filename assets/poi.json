@@ -1,0 +1,53 @@
+{
+  "seasons" : [
+    {
+      "num": 3,
+      "title": "Song of Lynchadelphia",
+      "episodes": [
+        {
+          "num" : 1,
+          "title" : "Smiling Bags og Death, Part One",
+          "description" : "David Lynch passed on January 16th, 2025.<br>In the Song of Lynchadelphia season opener, Julien Suaudeau travels sixty years back to January 1966 on 13th and Wood, where David Lynch has just moved in with Jack Fisk. As the song of the city echoes in Lynch's films and across the Twin Peaks universe, and as other voices familiar with his work chime in, Jack Fisk recalls how his best friend dreamed up his art in Philadelphia, Pennsylvania.<br> In addition to his collaboration with Lynch (Eraserhead, The Straight Story, Mulholland Drive), Jack Fisk has worked as production designer and art director with Terence Malick (Days of Heaven, Badlands, The Thin Red Line, The New World, The Tree of Life, To the Wonder, Song to Song), Brian de Palma (Carrie, Phantom of the Paradise), Paul Thomas Anderson (There Will Be Blood), Martin Scorsese (Killers of the Flower Moon), among others. His most recent collaboration is with Josh Safdie, on Marty Supreme.",
+          "locations" : [
+            {
+              "lat" : 0.0,             
+              "lon" : 0.0,
+              "name" : "City Morgue"
+            },
+            {
+              "lat" : 0.0,             
+              "lon" : 0.0,
+              "name" : "13th and Wood"
+            },
+            {
+              "lat" : 0.0, 
+              "lon" : 0.0,
+              "name" : "Pete's Famous Diner"
+            },
+            {
+              "lat" : 0.0, 
+              "lon" : 0.0,
+              "name" : "Durfer Street"
+            }
+          ]
+        },
+        {
+          "num" : 5,
+          "title" : "The Fear is Inside Him",
+          "description" : "What if the fear that David Lynch said he found in Philadelphia came from another place, more emotional than physical? According to Peggy Reavey, who married Lynch in 1968 and is the mother of their daughter Jennifer, the young David arrived in the city with a baggage full of insecurities. The first part of a long interview with Reavey, this episode interlaces her memories with Jack Fisk’s and soundscapes from the David Lynch universe, as we examine how Lynch projected his deepest terrors-of failing as a filmmaker, of not living the art life he knew he was meant for—on his living environment at the time.",
+          "locations" : [
+            {
+              "lat" : 39.955738,             
+              "lon" : -75.163146,
+              "name" : "PAFA",
+              "description" : "David Lynch enrolled at the Pennsylvania Academy of the Fine Arts in late 1965. He received a student deferment that allowed him not to be drafted. At PAFA, Lynch joined his high school friend and roommate Jack Fisk, who had convinced him to come up from Alexandria, Virginia. During the first weeks of the 1966 spring term, Fisk introduced Lynch to Peggy Reavey, also a PAFA student, who had grown up in Chestnut Hill.",
+              "image" : "assets/season3/episode5/Lynch and Reavey at the PAFA cafeteria in 1967 - Photo by EO Omwake .jpg",
+              "audio" : "assets/season3/episode5/Peggy_Meeting David at the PAFA cafeteria.wav"
+            }
+          ]
+        }
+      ]
+    } 
+
+  ]
+}

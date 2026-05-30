@@ -3,27 +3,40 @@
 <head>
   <meta charset="utf-8">
   <script src="node_modules/lil-gui/dist/lil-gui.umd.js"></script>
-  <script src="https://cesium.com/downloads/cesiumjs/releases/1.141/Build/Cesium/Cesium.js"></script>
-  <script src="src/getText.js"></script>
-  <link href="https://cesium.com/downloads/cesiumjs/releases/1.141/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-  <link href="node_modules/lil-gui/dist/lil-gui.min.css" rel="stylesheet">
+  <script src="node_modules/cesium/Build/Cesium/Cesium.js"></script>
+  <script src="src/mapview.js"></script>
+  <script src="src/utils.js"></script>
+  <link href="node_modules/cesium/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <link href="node_modules/lil-gui/dist/lil-gui.css" rel="stylesheet">
+  <style>
+    button.cesium-infoBox-camera{
+      display: none;
+    }
+    .cesium-viewer-infoBoxContainer {
+      border-radius: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .cesium-infoBox {
+      border-radius: 0;
+      height:85%;
+      overflow-y:auto;
+    }
+    .cesium-infoBox-title {
+      border-radius: 0;
+      text-align:left;
+    }
+    .cesium-infoBox-contents {
+      height: 1000px;
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
 <div id="cesiumContainer"></div>
   <script type="module">
-    Cesium.Ion.defaultAccessToken = await getText("cesium-read-key.txt");
-    const viewer = new Cesium.Viewer('cesiumContainer', {
-      terrain: Cesium.Terrain.fromWorldTerrain(),
-      timeline: false,
-      animation: false,
-      homeButton: false,
-      scene3DOnly: true,
-      selectionIndicator: false,
-      geocoder: false,
-      infoBox: true
-    });    
+    const viewer = await initializeCesium(); 
 
-    // Fly the camera to San Francisco at the given longitude, latitude, and height.
+    // Fly the camera to Philadelphia at the given longitude, latitude, and height.
     viewer.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(-75.165222, 39.952583, 9000),
       orientation: {
@@ -32,77 +45,18 @@
       }
     });
     
-    const imgname = "assets/test-image.jpg";
-    const dataPoint = { longitude: -75.165222, latitude: 39.952583, height: 0 };
-    // Mark this location with a red point.
-    const pointEntity = viewer.entities.add({
-        name: `Name`,
-        id: `Id`,
-        description: `<h1>Updated Content</h1>
-              <p>An example description</p><br>
-              <figure>
-              <figcaption>Listen to the T-Rex:</figcaption>
-                <audio controls src="assets/t-rex-roar.mp3"></audio>
-                </figure>
-              <img src=${imgname} /><br>
-              `,
-        position: Cesium.Cartesian3.fromDegrees(dataPoint.longitude, dataPoint.latitude, dataPoint.height),
-        point: {
-            pixelSize: 10,
-            color: Cesium.Color.BLACK,
-            outlineColor: Cesium.Color.WHITE,
-            outlineWidth: 2,
-        },
-        billboard: {
-            image: "assets/pin.png",
-            width: 32,
-            height: 50,
-            pixelOffset: new Cesium.Cartesian2(0, -25),
-        },
-        label: {
-            text: "TEST",
-            font: "14pt monospace",
-            style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-            outlineWidth: 2,
-            verticalOrigin: Cesium.VerticalOrigin.MIDDLE,
-            horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
-            pixelOffset: new Cesium.Cartesian2(10, 0),
-        }
-    });
-
-    const clickhandler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
-    clickhandler.setInputAction(async (movement) => {
-        const pick = viewer.scene.pick(movement.position);
-        if (Cesium.defined(pick)) {
-            console.log("Mouse clicked:", pick.id);
-        }
-    }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-
-    const gui = new lil.GUI({title: "Song of Philadelphia", closeFolders: true});
-    gui.domElement.style.position = "absolute";
-    gui.domElement.style.top = "10px";
-    gui.domElement.style.left = "10px";
-    gui.domElement.style.zIndex = "1000";
-
-    const myObject = {
-        location1: function() { console.log("location1"); },
-        location2: function() { console.log("location2"); }
-    };
-
-    const season3 = gui.addFolder( 'Season 3' );
-    const ep1 = season3.addFolder( 'Episode 1' );
-    const ep2 = season3.addFolder( 'Episode 2' );
-    const ep3 = season3.addFolder( 'Episode 3' );
-
-    ep1.add(myObject, 'location1');
-    ep1.add(myObject, 'location2');
-
-    ep2.add(myObject, 'location1');
-    ep2.add(myObject, 'location2');
-
-    ep3.add(myObject, 'location1');
-    ep3.add(myObject, 'location2');
+    const data = await getJson("assets/poi.json");
+    const gui = initializeGUI(data, viewer);
   </script>
+ </div>
+ <div class="cesium-viewer-infoBoxContainer">
+  <div id="sopInfoBox" class="cesium-infoBox cesium-infoBox-bodiless">
+    <div class="cesium-infoBox-title" id="sopInfoBoxTitle">PAFA</div> 
+    <button class="cesium-infoBox-close" type="button" onclick="ShowInfoBox(false, null);"> x</button>
+    <div class="cesium-infoBox-contents" id="sopInfoBoxContents">
+      <!---<img src ="assets/season3/episode5/Lynch and Reavey at the PAFA cafeteria in 1967 - Photo by EO Omwake .jpg" width="100%"/><br><p>David Lynch enrolled at the Pennsylvania Academy of the Fine Arts in late 1965. He received a student deferment that allowed him not to be drafted. At PAFA, Lynch joined his high school friend and roommate Jack Fisk, who had convinced him to come up from Alexandria, Virginia. During the first weeks of the 1966 spring term, Fisk introduced Lynch to Peggy Reavey, also a PAFA student, who had grown up in Chestnut Hill.</p><p>Listen:</p><audio controls src="assets/season3/episode5/Peggy_Meeting David at the PAFA cafeteria.wav"></audio>-->
+    </div>
+  </div>
  </div>
 </body>
 </html>

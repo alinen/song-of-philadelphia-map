@@ -24,24 +24,38 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.2102413"
-     inkscape:cx="87.994128"
-     inkscape:cy="563.63806"
-     inkscape:window-width="1440"
-     inkscape:window-height="890"
-     inkscape:window-x="-6"
-     inkscape:window-y="-6"
-     inkscape:window-maximized="1"
+     inkscape:zoom="0.074331525"
+     inkscape:cx="-1984.3532"
+     inkscape:cy="1809.4611"
+     inkscape:window-width="1303"
+     inkscape:window-height="638"
+     inkscape:window-x="-3"
+     inkscape:window-y="116"
+     inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs2" />
+     id="defs2">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter1212"
+       x="-0.25874657"
+       y="-0.61297823"
+       width="1.5176284"
+       height="2.2256632">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="7.4943338"
+         id="feGaussianBlur1214" />
+    </filter>
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
     <g
        id="g1166"
-       transform="matrix(1.0779333,0,0,1.0779333,-4.0614463,-2.8845219)"
+       transform="matrix(1.0875714,0,0,1.0569776,60.878005,-18.474654)"
        inkscape:export-filename="pin.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
@@ -62,6 +76,36 @@
            cy="65.054016"
            r="11.326271" />
       </g>
+    </g>
+    <g
+       id="g1221"
+       transform="matrix(0.87488593,0,0,0.70900393,258.68164,142.25227)"
+       inkscape:export-filename="pin2.png"
+       inkscape:export-xdpi="119.41451"
+       inkscape:export-ydpi="119.41451">
+      <path
+         id="path1206"
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:7.99999;stroke-linecap:round;stroke-opacity:1;filter:url(#filter1212)"
+         d="m -194.1543,125.19531 c -12.39529,0.0422 -24.79338,-0.0514 -37.1873,0.0558 -6.14995,0.58208 -11.95078,3.52351 -16.42207,7.72549 -2.86816,2.7992 -5.11687,6.64881 -4.86524,10.77344 0.22562,3.04643 2.13174,5.66831 4.42264,7.56133 3.80648,3.22694 8.56742,5.03766 13.27751,6.49911 8.82408,2.61698 18.09696,3.4152 27.27031,3.24561 9.29237,-0.22267 18.66082,-1.59359 27.34649,-5.00656 3.91123,-1.60481 7.76594,-3.75574 10.47903,-7.07116 1.84041,-2.32556 2.69222,-5.50421 1.81542,-8.39002 -1.11103,-4.27631 -4.4804,-7.5203 -8.05729,-9.88607 -4.47489,-2.96036 -9.65,-4.97734 -15.01354,-5.45202 -1.02034,-0.0634 -2.0439,-0.0613 -3.06596,-0.0549 z" />
+      <g
+         id="g1149"
+         transform="translate(1.2584746,2.5169492)">
+        <path
+           id="path353"
+           style="fill:#000000;stroke:#ffffff;stroke-width:4;stroke-linecap:round;stroke-opacity:1"
+           d="m -212.68211,28.945003 a 25.169491,25.169491 0 0 0 -25.16952,25.169523 25.169491,25.169491 0 0 0 13.92886,22.50767 c 0.16913,12.733778 0.933,41.450004 4.39922,50.820674 4.50021,12.166 8.16384,16.04656 8.16384,16.04656 0,0 3.20329,-3.87991 6.82904,-16.04656 2.79465,-9.37777 3.13018,-38.126541 3.13779,-50.846512 a 25.169491,25.169491 0 0 0 13.88029,-22.481832 25.169491,25.169491 0 0 0 -25.16952,-25.169523 z" />
+        <circle
+           style="fill:#ffffff;stroke:none;stroke-width:4;stroke-linecap:round"
+           id="path355"
+           cx="-218.34534"
+           cy="47.192799"
+           r="8.1800852" />
+      </g>
+      <path
+         id="path1203"
+         style="fill:none;stroke:#ffffff;stroke-width:7.99999;stroke-linecap:round"
+         d="m -191.64442,126.79132 c 8.11622,0.31462 22.37959,7.3247 22.37959,16.36017 0,9.03547 -18.31174,16.36017 -40.90042,16.36017 -22.58868,0 -40.90042,-7.3247 -40.90042,-16.36017 0,-9.03547 12.99048,-16.36017 20.79209,-16.36017"
+         sodipodi:nodetypes="csssc" />
     </g>
   </g>
 </svg>
