@@ -10,14 +10,26 @@
           "description" : "David Lynch passed on January 16th, 2025.<br>In the Song of Lynchadelphia season opener, Julien Suaudeau travels sixty years back to January 1966 on 13th and Wood, where David Lynch has just moved in with Jack Fisk. As the song of the city echoes in Lynch's films and across the Twin Peaks universe, and as other voices familiar with his work chime in, Jack Fisk recalls how his best friend dreamed up his art in Philadelphia, Pennsylvania.<br> In addition to his collaboration with Lynch (Eraserhead, The Straight Story, Mulholland Drive), Jack Fisk has worked as production designer and art director with Terence Malick (Days of Heaven, Badlands, The Thin Red Line, The New World, The Tree of Life, To the Wonder, Song to Song), Brian de Palma (Carrie, Phantom of the Paradise), Paul Thomas Anderson (There Will Be Blood), Martin Scorsese (Killers of the Flower Moon), among others. His most recent collaboration is with Josh Safdie, on Marty Supreme.",
           "locations" : [
             {
-              "lat" : 0.0,             
-              "lon" : 0.0,
-              "name" : "City Morgue"
+              "lat" : 39.955738,             
+              "lon" : -75.163146,
+              "name" : "PAFA"
             },
             {
               "lat" : 0.0,             
               "lon" : 0.0,
+              "name" : "City Morgue"
+            },
+            { 
+              "lat" : 39.9587382463086,             
+              "lon" : -75.16007456173038,
               "name" : "13th and Wood"
+            },
+            {
+              "lat" : 39.95200981337728, 
+              "lon" : -75.1719020749227,
+              "name" : "19th and Chestnut",
+              "description" : "Jack Fisk and David Lynch standing near 19th and Chestnut in December 1967 (Credit: C.K Williams).",
+              "image" : "assets/season3/episode1/600x600bb.webp"
             },
             {
               "lat" : 0.0, 
@@ -28,6 +40,70 @@
               "lat" : 0.0, 
               "lon" : 0.0,
               "name" : "Durfer Street"
+            }
+          ]
+        },
+        {
+          "num" : 2,
+          "title" : "The Art Life",
+          "description" : "Philadelphia, 1966.<br> In his studio at the Pennsylvania Academy of the Fine Arts, David Lynch is experimenting with ideas, forms, materials, shapes. He is looking for something exciting. One night, he sees movement in the painting he is working on and starts thinking about film. Feeding on the effervescence of the local artistic scene, with the help of his best friend and roommate, fellow PAFA student Jack Fisk, Lynch is going to make three films in two years, while getting married and becoming a father.<br> In this episode, Julien Suaudeau continues to weave the memories of Lynch's early years with soundscapes from his cinematic work (Eraserhead, Twin Peaks, Mulholland Drive, Twin Peaks: The Return) and examines the micro-events that encouraged a young creative mind to pursue the art life.",
+          "locations" : [
+            { 
+              "lat" : 39.96910288360874, 
+              "lon" : -75.17783008465959,
+              "name" : "2429 Aspen St",
+              "description" : "David Lynch in the \"Father, Son, Holy Ghost house\" - 2429 Aspen St - 1967 (Photo: C.K. Williams). The cries of Jennifer, the baby Lynch had with Peggy Reavey, yet another PAFA alum, are present on the soundtrack of The Alphabet, which was shot on the third floor.",
+              "image" : "assets/season3/episode2/Lynch4.jpg"
+            },
+            {
+              "lat" : 39.97235833565372, 
+              "lon" : -75.17665884638927,
+              "name" : "2416 Poplar Street", 
+              "description" : "\"The Grandmother\" was shot entirely at 2416 Poplar Street, the home Lynch and Reavey bought after getting married. A neighborhood boy plays the lead."
+            },
+            {
+              "lat" : 40.07038468247833, 
+              "lon" : -75.20746365670344,
+              "name" : "Chestnut Hill",
+              "description" : "Peggy Reavey and David Lynch outside Reavey's parents' home in Chestnut Hill, 1968 (Photo: Bernard V. Lentz)",
+              "image" : "assets/season3/episode2/Lynch-2.jpg"
+            }
+          ]
+        },
+        {
+          "num" : 3,
+          "title" : "F**k You, Gordon",
+          "description" : "Although Philadelphia is visible only in a couple of shots in the entire David Lynch's filmography, the city's aura is the primary color and the thread of the cinematic language we have come to recognize as \"Lynchian\". In this episode, Julien Suaudeau dives deeper into the David Lynch dreamworld and examines the wild ways in which Philly manifests itself in Eraserhead, Mulholland Drive, and the Twin Peaks universe. What if Lynch's reinvention of the city actually was the artist's \"room to dream\"? An MRI of his creative mind? And maybe the place where we find out that life is but a dream?",
+          "locations" : [
+            {
+              "lat" : 0.0,             
+              "lon" : 0.0,
+              "name" : "Unknown"
+            },
+            {
+              "lat" : 0.0,             
+              "lon" : 0.0,
+              "name" : "Unknown"
+            }
+          ]
+        },
+        {
+          "num" : 4,
+          "title" : "When the Robins Come",
+          "description" : "David Lynch often identified Philadelphia as his greatest influence, and Philadelphia has nothing but love for David Lynch. What are the Lynchian places and happenings in the city? In this episode, Eric Bresler talks about bringing the Lady in the Radiator and Sherilyn Fenn to PhilaMOCA. Dennis McNett explains how he created the Lynch mural-memorial on Buttonwood Street. Josh Hitchens, the last Philadelphian who ever interviewed David Lynch, recalls his feelings before, during, and after the phone call. Jack Fisk remembers searching for filming locations across the city with Lynch fifteen years ago and his friend's disappointment as Lynch realized the Philadelphia he'd experienced from 1965 to 1970 no longer existed.",
+          "locations" : [
+            {
+              "lat" : 39.96244250731368, 
+              "lon" : -75.15753667707054,
+              "name" : "PhilaMOCA",
+              "description" : "In this episode, Eric Bresler talks about bringing the Lady in the Radiator and Sherilyn Fenn to PhilaMOCA"
+            },
+            {
+              "lat" : 39.960766294111295,
+              "lon" : -75.15574851746565,
+              "name" : "Buttonwood Lynch Mural",
+              "description" : "Dennis McNett's mural, \"There is Trouble 'Til the Robins Come\", 1025 Hamilton Street on the Buttonwood Street side of Love City Brewing. (Photo: Julien Suaudeau).",
+              "image" : "assets/season3/episode4/ButtonwoodMural.jpeg"
             }
           ]
         },
@@ -43,6 +119,40 @@
               "description" : "David Lynch enrolled at the Pennsylvania Academy of the Fine Arts in late 1965. He received a student deferment that allowed him not to be drafted. At PAFA, Lynch joined his high school friend and roommate Jack Fisk, who had convinced him to come up from Alexandria, Virginia. During the first weeks of the 1966 spring term, Fisk introduced Lynch to Peggy Reavey, also a PAFA student, who had grown up in Chestnut Hill.",
               "image" : "assets/season3/episode5/Lynch and Reavey at the PAFA cafeteria in 1967 - Photo by EO Omwake .jpg",
               "audio" : "assets/season3/episode5/Peggy_Meeting David at the PAFA cafeteria.wav"
+            }
+          ]
+        },
+        {
+          "num" : 6,
+          "title" : "Call Me If Anything Exciting Happens",
+          "description" : "Peggy Reavey married David Lynch in 1968. She is a painter and the mother of Jennifer Lynch. As she recalls her final years with Lynch in Philadelphia and their young family's move to California, a new image of the filmmaker and of his creative process comes into focus. \"It was his thing, Reavey says, but I knew what it was.\" Listening to Reavey reflect on her contributions to The Grandmother, Lynch's third short film, and about how she was replaced by \"a whole staff\" as he started working on Eraserhead, we understand that each film comes from a bundle of dreams, experiences, people, and places that could not be ascribed to a single individual: the person known as the author always contains multitudes. How much of Lynch's life went into his films? What kind of agency did his loved ones hold as the original idea was sculpted into motion pictures and sounds? Why was the presence, the emotional support of a trusted partner so critical to the filmmaker's authorship, as he translated his vision into cinematic language?",
+          "locations" : [
+            {
+              "lat" : 0.0,             
+              "lon" : 0.0,
+              "name" : "Unknow"
+            },
+            {
+              "lat" : 0.0,             
+              "lon" : 0.0,
+              "name" : "Unknown"
+            }
+          ]
+        },
+        {
+          "num" : 7,
+          "title" : "We Are Like the Dreamer",
+          "description" : "In the Lynchadelphia finale, the season's guests and a few others share a personal David Lynch memory and reflect on how he and his work affected their life. Song of Philadelphia host Julien Suaudeau and his wife Anne Duchene join the chorus and provide conflicting accounts of the role one Lynch film in particular played in pulling them closer to each other. Stick around for the donut in the episode's outro: a Twin Peaks-inspired song by Suaudeau's band in the 1990's, \"Ana Anyway\".",
+          "locations" : [
+            {
+              "lat" : 0.0,             
+              "lon" : 0.0,
+              "name" : "Unknow"
+            },
+            {
+              "lat" : 0.0,             
+              "lon" : 0.0,
+              "name" : "Unknown"
             }
           ]
         }
