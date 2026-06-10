@@ -15,14 +15,14 @@
               "name" : "PAFA"
             },
             {
-              "lat" : 0.0,             
-              "lon" : 0.0,
-              "name" : "City Morgue"
+              "lat" : 39.95873,    
+              "lon" : 75.16011,
+              "name" : "\"City Morgue\" back in 1966, presently McSherry Annex - Roman Catholic High School"
             },
             { 
               "lat" : 39.9587382463086,             
               "lon" : -75.16007456173038,
-              "name" : "13th and Wood"
+              "name" : "13th and Wood (house that Jack Fisk and David Lynch rented in 1966 and 1967)"
             },
             {
               "lat" : 39.95200981337728, 
@@ -32,14 +32,14 @@
               "image" : "assets/season3/episode1/600x600bb.webp"
             },
             {
-              "lat" : 0.0, 
-              "lon" : 0.0,
-              "name" : "Pete's Famous Diner"
+              "lat" : 39.95636, 
+              "lon" : -75.17474,
+              "name" : "\"Pete's Famous Diner\" back in 1966, now Pete's Famous Pizza"
             },
             {
-              "lat" : 0.0, 
-              "lon" : 0.0,
-              "name" : "Durfer Street"
+              "lat" : 39.92040163784682, 
+              "lon" : -75.15716350003902,
+              "name" : "6th and Wolf, near Durfor Street"
             }
           ]
         },
